@@ -1,13 +1,13 @@
 <?php
-class LoginValidation
+class validateForm
 {
-    public function makeForm()
+    public function Form()
     {
         echo '<form action="number4.php" method="post">
-             Name: <input type="text" name="username" required><br>
+             Name: <input type="text" name="name" required><br>
              Address <input type="text" name="address" required><br>
              Age: <input type="number" name="age" required> <br>
-             Mobile Number: <input type="text" name="mobileno" required> <br>
+             Mobile Number: <input type="text" name="mobilenumber" required> <br>
              
              <input type="submit">
              </form>';
@@ -15,47 +15,54 @@ class LoginValidation
 
     public function __construct()
     {
-        $this->var1 = isset($_POST['username']) ? $_POST['username'] : null;
-        $this->var2 = isset($_POST['address']) ? $_POST['address'] : null;
-        $this->var3 = isset($_POST['mobileno']) ? $_POST['mobileno'] : null;
-        $this->var4 = isset($_POST['age']) ? $_POST['age'] : null;
+        $this->nameUser1 = isset($_POST['username']) ? $_POST['name'] : null;
+        $this->address = isset($_POST['address']) ? $_POST['address'] : null;
+        $this->age = isset($_POST['age']) ? $_POST['age'] : null;
+        $this->mobileNumber = isset($_POST['mobilenumber']) ? $_POST['mobilenumber'] : null;
+        
     }
 
     public function action()
     {
-        if (!preg_match("/^[a-zA-z]*$/", $this->var1)) {
-            $ErrMsg = "Only alphabets and whitespace are allowed.<br>";
-            echo $ErrMsg;
+        if (!preg_match("/^[a-zA-z]*$/", $this->nameUser1)) {
+            echo "Invalid name of user.";
+            echo "<br>";
         } else {
-            echo $this->var1 . " name is valid<br>";
+            echo $this->nameUser1 . " name is valid";
+            echo "<br>";
         }
 
 
-        if(!preg_match('/^(?:\\d+ [a-zA-Z ]+, ){2}[a-zA-Z ]+$/', $this->var2)){
-            echo "not valid address<br>";
+        if(!preg_match('/^(?:\\d+ [a-zA-Z ]+, ){2}[a-zA-Z ]+$/', $this->address)){
+            echo "not valid address";
+            echo "<br>";
         }else{
-            echo "Address is valid<br>";
+            echo "Address is valid.";
+            echo "<br>";
         }
         
 
-        if ($this->var4 >= 18) {
-            echo "Age is valid<br>";
+        if ($this->age >= 18) {
+            echo "Age is valid";
+            echo "<br>";
         } else {
-            echo "Age is not valid it should be 18+<br>";
+            echo "Age must be 18 above.";
+            echo "<br>";
         }
 
-        $length = strlen($this->var3);
+        $length = strlen($this->mobileNumber);
 
         if ($length < 11 || $length > 11    ) {
-            $ErrMsg = "Mobile must have 11 digits";
-            echo $ErrMsg;
+            echo "Number must have 11 digits";
+            echo "<br>";
         } else {
-            echo "Phone number is valid";
+            echo "Number is valid";
+            echo "<br>";
         }
         
     }
 }
 
-$cl = new LoginValidation();
-$cl->makeForm();
+$cl = new validateForm();
+$cl->Form();
 $cl->action();
