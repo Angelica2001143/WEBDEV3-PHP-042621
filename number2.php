@@ -46,7 +46,7 @@ label {
         <form method="post">
             <div class="mb-3">
                 <label class="form-label ">
-                    <h5>Please Input here: </h5>
+                    <h5>Input here: </h5>
                 </label>
                 <input type="text number" name="text" id="input" class="form-control" placeholder="type here ...."><br>
                 <input type="submit" name='submit' class="btn btn-secondary">
@@ -56,12 +56,13 @@ label {
                 <br>
         </form>
         <br>
+            <br>
 </body>
 <?php
  
  session_start();
 
- class addAndaccept{
+ class addAccept{
  
     public $inputedText;
 
@@ -95,8 +96,8 @@ label {
 
 if(isset($_POST['submit'])){
     $inputedText = $_POST['text'];
-    $addAndaccept = new addAndaccept($inputedText);
-    $addAndaccept ->adding();
+    $addAccept = new addAccept($inputedText);
+    $addAccept ->adding();
 }
 
 
